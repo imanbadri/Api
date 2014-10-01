@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html ng-app>
+<head><title>Simple demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+    </head>
+    
+    <body>
+    Demo 2 showing the clock , with controller<br>
+        
+        <div ng-controller="MyController">
+            <h5>Hello {{ clock }} !</h5>
+        </div>
+    
+        <script type="text/javascript">
+            function MyController($scope, $timeout){
+                var updateClock = function() {
+                    var myClock = new Date();
+                    myClock = myClock.toLocaleTimeString();
+                    
+                    $scope.clock = myClock;
+                    $timeout(function() {
+                        updateClock();
+                    },1000);
+                };
+                
+                updateClock();
+            };
+            </script>
+        
+        
+    </body>
+</html>
